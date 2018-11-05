@@ -1,0 +1,13 @@
+<h1 >Data Pagination Demo</h1>
+
+<ul>
+  <li *ngFor="let post of post">{{post.officeName}}</li>
+</ul>
+
+<ul class="pagination">
+  
+  <li *ngFor="let post of pageN; index as i" (click)="getDataToShow(i+1)"><a      routerLink="#">{{i+1}}</a>
+  </li>
+  
+  
+</ul>
