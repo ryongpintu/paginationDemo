@@ -12,12 +12,12 @@ export class DataService {
   }
 
   getData(i){
-    return this.http.get(`http://localhost:3000/data?pageN=${i}&&pageS=5`)
+    return this.http.get(`https://paginationappdemo.herokuapp.com/data?pageN=${i}&&pageS=5`)
       
       
   }
 
   getAllData(){
-    return this.http.get(`http://localhost:3000/all`)
+    return this.http.get(`https://paginationappdemo.herokuapp.com/all`)
   }
 }
