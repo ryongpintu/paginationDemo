@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-
+import {RouterModule} from '@angular/router';
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
@@ -22,7 +22,7 @@ export class PaginationComponent implements OnInit {
       this.data.getAllData()
         .subscribe((data)=>{
           
-this.pageN=new Array(data);
+         this.pageN=new Array(data);
           
          
         })
