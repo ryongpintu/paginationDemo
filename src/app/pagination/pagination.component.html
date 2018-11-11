@@ -6,7 +6,7 @@
 
 <ul class="pagination">
   
-  <li  *ngFor="let post of pageN; index as i" (click)="getDataToShow(i+1)"><a class="paginationBtn"  routerLink="/"  >{{i+1}}</a>
+  <li class="paginationBtn" routerLinkActive="active" *ngFor="let post of totalPageN; index as i" (click)="getDataToShow(i+1)"><a   [routerLink]="['/data',123]" [queryParams]="{pageN:i+1}" >{{i+1}}</a>
   </li>
   
   

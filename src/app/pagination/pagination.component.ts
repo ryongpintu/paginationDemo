@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import {RouterModule} from '@angular/router';
+import {RouterModule, ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
@@ -8,36 +8,45 @@ import {RouterModule} from '@angular/router';
 })
 export class PaginationComponent implements OnInit {
   post;
+  totalPageN;
   pageN;
-  constructor(private data:DataService) { }
+  constructor(
+    private route:ActivatedRoute,
+    private data:DataService) { }
 
   ngOnInit() {
-    this.data.getData(1)
-    .subscribe((data)=>{
-      this.post=data;
-      
-    })
+    this.route.queryParamMap.subscribe(params=>{
+      this.pageN= params.get('pageN')?params.get('pageN'):1;
 
-    
-      this.data.getAllData()
-        .subscribe((data)=>{
-          
-         this.pageN=new Array(data);
-          
-         
-        })
-    
+      })
 
-  }
-
-  
-
-  getDataToShow(i:number){
-    this.data.getData(i)
+      this.data.getData(this.pageN)
       .subscribe((data)=>{
         this.post=data;
         
       })
+  
+    
+      this.data.getAllData()
+        .subscribe((data)=>{
+          
+         this.totalPageN=new Array(data);
+         
+         
+        })
+   }
+
+  
+
+  getDataToShow(i){
+    
+    
+      this.data.getData(this.pageN)
+      .subscribe((data)=>{
+        this.post=data;
+        
+      })
+      
       
   }
 
